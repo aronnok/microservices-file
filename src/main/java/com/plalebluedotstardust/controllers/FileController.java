@@ -62,6 +62,23 @@ public class FileController {
 
     }
 
+    @POST
+    @Path("/uploadandupdate")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response uploadFileAndUpdate(
+            @FormDataParam("file") InputStream uploadedInputStream,
+            @FormDataParam("file") FormDataContentDisposition fileDetail) {
+
+        String uploadedFileLocation = "d://tmp/" + fileDetail.getFileName();
+
+        // save it
+        saveFile(uploadedInputStream, uploadedFileLocation);
+
+        String output = "File uploaded to : " + uploadedFileLocation;
+
+        return Response.status(200).entity(output).build();
+
+    }
 
     @POST
     @Path("/aggregator/upload")
