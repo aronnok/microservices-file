@@ -74,7 +74,7 @@ public class FileController {
         // save it
         saveFile(uploadedInputStream, uploadedFileLocation);
 
-        String output = "File uploaded to : " + uploadedFileLocation;
+        String output = "File uploaded to MCSSCI : " + uploadedFileLocation;
 
         return Response.status(200).entity(output).build();
 
